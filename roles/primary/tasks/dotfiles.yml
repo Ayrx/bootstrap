@@ -1,0 +1,43 @@
+---
+- name: Clone dotfiles repo
+  git:
+    repo: https://github.com/Ayrx/dotfiles.git
+    dest: '{{ ansible_env.HOME }}/dotfiles'
+    update: yes
+
+- name: Install dotfiles
+  shell: '{{ ansible_env.HOME }}/dotfiles/install.sh'
+
+- name: Install Python 3.8.1 with pyenv
+  stat:
+    path: '{{ ansible_env.HOME }}/.pyenv/versions/3.8.1'
+  changed_when: false
+  register: python_381_dir
+- when: not python_381_dir.stat.exists
+  shell: '{{ ansible_env.HOME }}/.pyenv/bin/pyenv install 3.8.1'
+
+- name: Create neovim virtualenv
+  stat:
+    path: '{{ ansible_env.HOME }}/.pyenv/versions/neovim3'
+  changed_when: false
+  register: neovim3_dir
+- when: not neovim3_dir.stat.exists
+  shell: '{{ ansible_env.HOME }}/.pyenv/bin/pyenv virtualenv 3.8.1 neovim3'
+
+- name: Configure neovim virtualenv
+  pip:
+    state: latest
+    name:
+      - pip
+      - neovim
+      - pynvim
+    virtualenv: "{{ ansible_env.HOME }}/.pyenv/versions/neovim3"
+
+- name: Configure neovim
+  shell: "nvim +'PlugInstall --sync' +qall &> /dev/null"
+
+- name: Configure Cinnamon
+  shell: "dconf load /org/cinnamon/ < {{ ansible_env.HOME }}/dotfiles/cinnamon.conf"
+
+- name: Configure Cinnamon
+  shell: "dconf load /org/gnome/terminal/legacy/profiles:/ < {{ ansible_env.HOME }}/dotfiles/gnome_terminal.conf"

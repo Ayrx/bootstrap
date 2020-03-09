@@ -1,0 +1,21 @@
+---
+- name: Install pyenv
+  stat:
+    path: '{{ ansible_env.HOME }}/.pyenv'
+  changed_when: false
+  register: pyenv_dir
+- when: not pyenv_dir.stat.exists
+  block:
+    - name: Downloading pyenv
+      get_url:
+        url: https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer
+        dest: /tmp/pyenv-init
+        mode: 0755
+    - name: Running pyenv
+      command: /tmp/pyenv-init
+
+  always:
+    - name: Cleaning up after pyenv
+      file:
+        path: /tmp/pyenv-init
+        state: absent

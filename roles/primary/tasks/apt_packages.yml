@@ -1,0 +1,51 @@
+---
+- name: Add neovim PPA
+  become: yes
+  apt_repository:
+    repo: ppa:neovim-ppa/stable
+
+- name: Update and upgrade apt packages
+  become: yes
+  apt:
+    upgrade: yes
+    update_cache: yes
+
+- name: Install Base Packages
+  become: yes
+  apt:
+    pkg:
+      - build-essential
+      - cmake
+      - gdb
+      - python-dev
+      - python-pip
+      - git
+      - libssl-dev
+      - libffi-dev
+      - wget
+      - g++-multilib
+      - neovim
+      - p7zip-full
+      - xz-utils
+      - zip
+      - openjdk-8-jdk
+      - fish
+      - tmux
+      - curl
+      - zlib1g-dev
+      - libbz2-dev
+      - libreadline-dev
+      - libsqlite3-dev
+      - llvm
+      - libncurses5-dev
+      - libncursesw5-dev
+      - tk-dev
+      - liblzma-dev
+      - python-openssl
+      - fortune
+      - cinnamon-desktop-environment
+      - lightdm
+      - dkms
+      - module-assistant
+      - apt-transport-https
+      - gnupg2

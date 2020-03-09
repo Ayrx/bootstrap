@@ -1,0 +1,21 @@
+---
+- name: Install Rust
+  stat:
+    path: '{{ ansible_env.HOME }}/.rustup'
+  changed_when: false
+  register: rustup_dir
+- when: not rustup_dir.stat.exists
+  block:
+    - name: Downloading rustup
+      get_url:
+        url: https://sh.rustup.rs
+        dest: /tmp/rustup-init
+        mode: 0755
+    - name: Running rustup
+      command: /tmp/rustup-init -y
+
+  always:
+    - name: Cleaning up after rustup
+      file:
+        path: /tmp/rustup-init
+        state: absent

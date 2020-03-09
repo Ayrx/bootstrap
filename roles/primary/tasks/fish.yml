@@ -1,0 +1,27 @@
+---
+- name: Install oh-my-fish
+  stat:
+    path: '{{ ansible_env.HOME }}/.local/share/omf'
+  changed_when: false
+  register: omf_dir
+- when: not omf_dir.stat.exists
+  block:
+    - name: Downloading omf
+      get_url:
+        url: https://get.oh-my.fish
+        dest: /tmp/omf-init
+        mode: 0755
+    - name: Running omf
+      command: '/tmp/omf-init --noninteractive'
+
+  always:
+    - name: Cleaning up after rustup
+      file:
+        path: /tmp/omf-init
+        state: absent
+
+- name: Change shell to fish
+  become: yes
+  user:
+    name: '{{ ansible_user_id }}'
+    shell: /usr/bin/fish

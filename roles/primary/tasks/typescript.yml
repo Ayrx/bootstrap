@@ -1,0 +1,26 @@
+---
+- name: Add Node signing key
+  become: yes
+  apt_key:
+    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    state: present
+
+- name: Add Node repositories
+  become: yes
+  apt_repository:
+    repo: "{{ item }}"
+  with_items:
+    - "deb https://deb.nodesource.com/node_12.x {{ ansible_distribution_release }} main"
+    - "deb-src https://deb.nodesource.com/node_12.x {{ ansible_distribution_release }} main"
+
+- name: Install Node
+  become: yes
+  apt:
+    pkg:
+      - nodejs
+
+- name: Install TypeScript
+  become: yes
+  npm:
+    name: typescript
+    global: yes
