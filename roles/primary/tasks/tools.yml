@@ -7,7 +7,7 @@
 
 - name: Create the ~/tools/bin directory
   file:
-    path: '{{ ansible_env.HOME }}/bin'
+    path: '{{ ansible_env.HOME }}/tools/bin'
     state: directory
     mode: '0755'
 
