@@ -4,4 +4,5 @@
 - include: typescript.yml
 - include: dotfiles.yml
 - include: fish.yml
+- include: tools.yml
 - include: pentest.yml
