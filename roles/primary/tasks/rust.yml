@@ -19,3 +19,9 @@
       file:
         path: /tmp/rustup-init
         state: absent
+
+- name: Downloading rust-analyzer
+  get_url:
+    url: https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux
+    dest: '{{ ansible_env.HOME}}/tools/bin/rust-analyzer'
+    mode: 0755
