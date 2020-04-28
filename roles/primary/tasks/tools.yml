@@ -31,3 +31,9 @@
     dest: '{{ ansible_env.HOME }}/tools/bin/cloudflared'
     remote_src: yes
     mode: '0744'
+
+- name: Downloading neovim
+  get_url:
+    url: https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+    dest: '{{ ansible_env.HOME}}/tools/bin/nvim'
+    mode: 0755

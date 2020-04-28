@@ -1,8 +1,8 @@
 - include: apt_packages.yml
+- include: tools.yml
 - include: rust.yml
 - include: pyenv.yml
 - include: typescript.yml
 - include: dotfiles.yml
 - include: fish.yml
-- include: tools.yml
 - include: pentest.yml

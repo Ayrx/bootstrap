@@ -1,9 +1,4 @@
 ---
-- name: Add neovim PPA
-  become: yes
-  apt_repository:
-    repo: ppa:neovim-ppa/stable
-
 - name: Update and upgrade apt packages
   become: yes
   apt:
@@ -24,7 +19,6 @@
       - libffi-dev
       - wget
       - g++-multilib
-      - neovim
       - p7zip-full
       - xz-utils
       - zip
