@@ -11,13 +11,6 @@
     state: directory
     mode: '0755'
 
-- name: Download ripgrep
-  unarchive:
-    src: https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep-11.0.2-x86_64-unknown-linux-musl.tar.gz
-    dest: '{{ ansible_env.HOME }}/tools/bin/rg'
-    remote_src: yes
-    mode: '0744'
-
 - name: Download tokei
   unarchive:
     src: https://github.com/XAMPPRocky/tokei/releases/download/v10.1.2/tokei-v10.1.2-x86_64-unknown-linux-musl.tar.gz
