@@ -28,3 +28,6 @@
 
 - name: Install ripgrep
   shell: cargo install ripgrep
+
+- name: Install tokei
+  shell: cargo install tokei

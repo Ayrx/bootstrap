@@ -11,17 +11,10 @@
     state: directory
     mode: '0755'
 
-- name: Download tokei
-  unarchive:
-    src: https://github.com/XAMPPRocky/tokei/releases/download/v10.1.2/tokei-v10.1.2-x86_64-unknown-linux-musl.tar.gz
-    dest: '{{ ansible_env.HOME }}/tools/bin/tokei'
-    remote_src: yes
-    mode: '0744'
-
 - name: Download cloudflared
   unarchive:
-    src: https://github.com/cloudflare/cloudflared/archive/2020.2.1.tar.gz
-    dest: '{{ ansible_env.HOME }}/tools/bin/cloudflared'
+    src: https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.tgz
+    dest: '{{ ansible_env.HOME }}/tools/bin/'
     remote_src: yes
     mode: '0744'
 
