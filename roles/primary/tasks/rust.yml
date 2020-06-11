@@ -27,7 +27,7 @@
     mode: 0755
 
 - name: Install ripgrep
-  shell: cargo install ripgrep
+  shell: ~/.cargo/bin/cargo install ripgrep
 
 - name: Install tokei
-  shell: cargo install tokei
+  shell: ~/.cargo/bin/cargo install tokei
