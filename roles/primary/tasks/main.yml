@@ -6,3 +6,4 @@
 - include: dotfiles.yml
 - include: fish.yml
 - include: pentest.yml
+- include: others.yml

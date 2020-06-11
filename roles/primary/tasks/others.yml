@@ -1,0 +1,4 @@
+- name: Add ayrx to vboxsf group
+  user:
+    name: ayrx
+    groups: vboxsf
