@@ -23,3 +23,9 @@ Guest Additions via the ISO:
 ```
 $ sudo m-a prepare
 ```
+
+After Guest Additions is installed, run the following command:
+
+```
+$ usermod -a -G vboxsf <username>
+```
