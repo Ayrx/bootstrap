@@ -36,6 +36,9 @@
 - name: Configure neovim
   shell: "nvim +'PlugInstall --sync' +qall &> /dev/null"
 
+- name: Configure neovim
+  shell: "nvim +'CocInstall coc-rust-analyzer' +qall &> /dev/null"
+
 - name: Configure Cinnamon
   shell: "dconf load /org/cinnamon/ < {{ ansible_env.HOME }}/dotfiles/cinnamon.conf"
 

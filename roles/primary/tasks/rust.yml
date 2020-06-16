@@ -25,3 +25,6 @@
     url: https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux
     dest: '{{ ansible_env.HOME}}/tools/ansible_bin/rust-analyzer'
     mode: 0755
+
+- name: Install cargo-edit
+  shell: ~/.cargo/bin/cargo install cargo0-edit
