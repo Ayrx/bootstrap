@@ -5,21 +5,18 @@
     state: directory
     mode: '0755'
 
-- name: Create the ~/tools/bin directory
+- name: Create the ~/tools/ansible_bin directory
   file:
-    path: '{{ ansible_env.HOME }}/tools/bin'
+    path: '{{ ansible_env.HOME }}/tools/ansible_bin'
     state: directory
     mode: '0755'
 
-- name: Download cloudflared
-  unarchive:
-    src: https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.tgz
-    dest: '{{ ansible_env.HOME }}/tools/bin/'
-    remote_src: yes
-    mode: '0744'
+- name: Clone grabbag repo
+  git:
+    repo: https://github.com/Ayrx/grabbag.git
+    dest: '{{ ansible_env.HOME }}/grabbag'
+    depth: 1
+    update: yes
 
-- name: Downloading neovim
-  get_url:
-    url: https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
-    dest: '{{ ansible_env.HOME}}/tools/bin/nvim'
-    mode: 0755
+- name: Install grabbag
+  shell: '{{ ansible_env.HOME }}/grabbag/install.sh'

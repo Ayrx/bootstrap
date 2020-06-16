@@ -22,7 +22,7 @@
       - p7zip-full
       - xz-utils
       - zip
-      - openjdk-8-jdk
+      - openjdk-11-jdk
       - fish
       - tmux
       - curl
