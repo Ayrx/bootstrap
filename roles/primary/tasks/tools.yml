@@ -17,6 +17,7 @@
     dest: '{{ ansible_env.HOME }}/grabbag'
     depth: 1
     update: yes
+    force: yes
 
 - name: Install grabbag
   shell: '{{ ansible_env.HOME }}/grabbag/install.sh'

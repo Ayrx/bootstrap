@@ -43,3 +43,4 @@
       - module-assistant
       - apt-transport-https
       - gnupg2
+      - sqlitebrowser

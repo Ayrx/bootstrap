@@ -27,4 +27,4 @@
     mode: 0755
 
 - name: Install cargo-edit
-  shell: ~/.cargo/bin/cargo install cargo0-edit
+  shell: ~/.cargo/bin/cargo install cargo-edit
